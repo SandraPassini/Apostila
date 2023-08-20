@@ -1,13 +1,19 @@
+using System.Text.Json.Serialization;
+
 namespace LeituraApostila
 {
     public class LerArquivoResponse
     {
-        public DateTime Date { get; set; }
+        [JsonPropertyName("data_leitura")]
+        public DateTime DataLeitura { get; set; }
 
-        public int TemperatureC { get; set; }
+        [JsonPropertyName("numero_pagina_atual")]
+        public int NumeroPaginaAtual { get; set; }
 
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+        [JsonPropertyName("numero_pagina_mostrar")]
+        public int NumeroPaginaMostrar => NumeroPaginaAtual + 11;
 
-        public string? Summary { get; set; }
+        [JsonPropertyName("numero_pagina_total")]
+        public int NumeroPaginaTotal { get; set; }
     }
 }

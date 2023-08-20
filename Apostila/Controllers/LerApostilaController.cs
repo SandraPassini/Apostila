@@ -3,7 +3,7 @@
 namespace LeituraApostila.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("lerapostila/{id_apostila}")]
     public class LerApostilaController : ControllerBase
     {
         public LerApostilaController()
@@ -17,7 +17,7 @@ namespace LeituraApostila.Controllers
             _logger = logger;
         }
         [HttpGet(Name = "GetLerArquivo")]
-        public IEnumerable<LerArquivoResponse> Get()
+        public IEnumerable<LerArquivoResponse, LerArquivoRequest> Get()
         {
             return null;
         }
