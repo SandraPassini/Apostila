@@ -15,7 +15,8 @@ namespace LeituraApostila.Controllers
             _logger = logger;
         }
         [HttpGet(Name = "GetLerArquivo")]
-        public IEnumerable<LerArquivoResponse, LerArquivoRequest> Get()
+        public IEnumerable<IActionResult> Get(LerArquivoRequest request,
+            [FromServices] ILerArquivoUseCase lerArquivoUseCase)
         {
             //declarando a variavel do tipo StreamWriter
             StreamReader x;
@@ -34,11 +35,11 @@ namespace LeituraApostila.Controllers
                 //le conteúdo da linha
                 string linha = x.ReadLine();
                 //escreve na tela o conteúdo da linha
-             //   if (linha == "11")
-             //   {
-             //       x.ReadLine();
-                    Console.WriteLine(linha);
-              //  }
+                //   if (linha == "11")
+                //   {
+                //       x.ReadLine();
+                Console.WriteLine(linha);
+                //  }
             }
             //após sair do while, é porque leu todo o conteúdo, então
             //temos que fechar o arquivo texto que está aberto
@@ -47,6 +48,8 @@ namespace LeituraApostila.Controllers
             Console.ReadKey();//esse comando é para não fechar a tela do console
                               //fechar so após o usuário clicar em uma tecla do
                               //teclado
+
+
             return null;
         }
     }
